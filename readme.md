@@ -128,7 +128,7 @@ spotify-ytdlp/
 
 ---
 
-## ⚙️ Installation
+## ⚙️ Installation (Python version 3.9)
 
 1. **Clone the repository**:
 
