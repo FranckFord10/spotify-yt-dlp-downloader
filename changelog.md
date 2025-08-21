@@ -6,6 +6,19 @@ Here’s what you asked for, following your style and structure:
 
 ---
 
+### 0.4.0 - 2025-AUG-21
+
+### Added
+
+- Ability to download playlists directly from Exportify CSV files placed in data/exportify/.
+    - CSVs are auto-scanned, playlists confirmed with the user, and batch downloaded.
+
+### Changed
+- removed shutil and added python version (from merge request, thank you Artisan Memory)
+- added tqdm to requirements.txt
+
+---
+
 ### 0.3.0 - 2025-AUG-13
 
 ### Added

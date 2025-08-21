@@ -2,7 +2,7 @@ import asyncio
 import questionary
 from utils.logger import log_info, log_warning, log_error
 from utils.track_checker import check_downloaded_files, check_downloaded_playlists
-from utils.loaders import load_tracks, load_playlists
+from utils.loaders import load_tracks, load_playlists, load_exportify_playlists
 from downloader.base_downloader import download_track, batch_download
 from downloader.playlist_download import download_playlist
 from downloader.youtube_link_downloader import download_from_link, download_from_playlist
@@ -19,6 +19,7 @@ def downloads_menu(config):
             "Download all pending (batch async)",
             "Search & Download a single track",
             "Download from playlists file",
+            "Download from Exportify CSVs",
             "Download from YouTube link/playlist",
             "Back",
         ]
@@ -93,6 +94,37 @@ def downloads_menu(config):
             to_download = selected
 
         for playlist in to_download:
+            asyncio.run(download_playlist(
+                playlist["name"],
+                playlist["tracks"],
+                config["output_dir"],
+                config["audio_format"],
+                config["sleep_between"]
+            ))
+
+    elif choice == "Download from Exportify CSVs":
+        playlists = load_exportify_playlists("data/exportify")
+
+        if not playlists:
+            log_info("No CSV playlists found in exportify folder.")
+            return
+
+        # Let user choose playlists
+        choices = [
+            questionary.Choice(title=f"{pl['name']} ({len(pl['tracks'])} tracks)", value=pl)
+            for pl in playlists
+        ]
+        selected = questionary.checkbox(
+            "Select playlists to download (space to toggle, enter to confirm):",
+            choices=choices
+        ).ask()
+
+        if not selected:
+            log_info("No playlists selected.")
+            return
+
+        # Batch download each selected playlist
+        for playlist in selected:
             asyncio.run(download_playlist(
                 playlist["name"],
                 playlist["tracks"],

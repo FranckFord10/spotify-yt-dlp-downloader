@@ -15,30 +15,31 @@ Features interactive menus, system checks, download management, metadata embeddi
 ## 📌 Features
 
 - **Enhanced Interactive CLI menus** for downloads, management, and automation
-- **Configurable settings** in `config.json`
-- **Track management** via JSON files (pending, failed, history)
+- **Batch and single downloads** pick and choose what you prefer
+- **Playlist file download**: using the playlist file.
+- **Download from Exportify CSVs** that you can get from [Exportify](https://exportify.net/)
+- **Download From Youtube** paste the link and download playlist or video as audio file.
+- **Flexible playlist downloads**: whole playlists at once or individual ones.
 - **System resource checks** (CPU, RAM, storage)
+- **Track management** via JSON files (pending, failed, history)
 - **Download by artist and song name**
-- **Batch and single downloads**
+- **Configurable settings** in `config.json`
 - **metadata embedding** for downloaded music 
 - **Retry failed downloads**
 - **Duplicate detection and file organization**
 - **Colorful terminal logs** (via `colorama`)
 - **Persistent logging** to `app.log`
 - **Modular, maintainable codebase**
-- **Playlist file download**: using the playlist file.
-- **Flexible playlist downloads**: whole playlists at once or individual ones.
 - **Export library data** as JSON with detailed track and album info.
 - **Clean up music library** by removing broken, or unreadable tracks.
 - **Choosing audio format** and target bitrate w/ quality and size impacts.
-- **Download From Youtube** paste the link and download playlist or video as audio file.
 
 
 ---
 
-## 🛠 Prerequisite for spotify downloads: **Export Your Spotify Data**
+## 🛠 Prerequisite for Spotify Export downloads: **Export Your Spotify Data**
 
-Before using Potty, you need to request your personal Spotify data from Spotify’s Privacy page. Spotify will provide you with a ZIP file containing several JSON files, including one named YourLibrary.json.
+Before using Potty for spotify downloads, you need to request your personal Spotify data from Spotify’s Privacy page. Spotify will provide you with a ZIP file containing several JSON files, including one named YourLibrary.json.
 
 This YourLibrary.json file contains your saved tracks, albums, and playlists metadata, which Potty can use to generate the track list and manage downloads.
 
@@ -76,6 +77,7 @@ spotify-ytdlp/
 │   └── prototype.py       # First version of this entire app 
 │
 ├── data/
+│   ├── exportify              # Directory where you should place your exportify csv files
 │   ├── tracks.json            # Track list (with artist, album, track, uri)
 │   ├── failed_downloads.json  # Tracks that failed to download
 │   └── download_history.json  # Downloaded tracks history

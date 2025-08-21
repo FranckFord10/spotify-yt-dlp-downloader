@@ -4,3 +4,4 @@ yt-dlp
 mutagen
 schedule
 questionary
+tqdm
