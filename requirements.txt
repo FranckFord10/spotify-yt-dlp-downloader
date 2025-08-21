@@ -4,4 +4,3 @@ yt-dlp
 mutagen
 schedule
 questionary
-shutil
