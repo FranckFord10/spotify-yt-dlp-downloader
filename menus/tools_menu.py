@@ -63,6 +63,7 @@ def tools_menu(config):
 
             elif choice == "Help":
                 log_info("Help: Use yt-dlp for YouTube downloads. Modify config.json to change settings.")
+                log_info("If you get many failed downloads, upgrade YT-DLP using: pip install --upgrade yt-dlp")
 
         except Exception as e:
             log_info(f"Error running tool '{choice}': {e}")

@@ -108,8 +108,7 @@ def downloads_menu(config):
         if not playlists:
             log_info("No CSV playlists found in exportify folder.")
             return
-
-        # Let user choose playlists
+    
         choices = [
             questionary.Choice(title=f"{pl['name']} ({len(pl['tracks'])} tracks)", value=pl)
             for pl in playlists
@@ -123,11 +122,33 @@ def downloads_menu(config):
             log_info("No playlists selected.")
             return
 
-        # Batch download each selected playlist
         for playlist in selected:
+            # Check which tracks are already downloaded
+            _, pending_tracks = check_downloaded_files(config["output_dir"], playlist["tracks"])
+            already_downloaded_count = len(playlist["tracks"]) - len(pending_tracks)
+
+            # Show summary before downloading
+            log_info(f"Playlist: {playlist['name']}")
+            log_info(f"  Already downloaded: {already_downloaded_count}")
+            log_info(f"  Pending download: {len(pending_tracks)}")
+
+            if not pending_tracks:
+                log_info("✅ All tracks already downloaded. Skipping...")
+                continue
+
+            # Ask user if they want to proceed
+            confirm = questionary.confirm(
+                f"Download {len(pending_tracks)} new tracks from '{playlist['name']}'?"
+            ).ask()
+
+            if not confirm:
+                log_info(f"❌ Skipped playlist: {playlist['name']}")
+                continue
+
+            # Run download only for pending tracks
             asyncio.run(download_playlist(
                 playlist["name"],
-                playlist["tracks"],
+                pending_tracks,
                 config["output_dir"],
                 config["audio_format"],
                 config["sleep_between"]
