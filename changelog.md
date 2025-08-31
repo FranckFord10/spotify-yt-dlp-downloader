@@ -6,6 +6,15 @@ Here’s what you asked for, following your style and structure:
 
 ---
 
+### 0.4.1 - 2025-AUG-21
+
+### Changed
+
+- Better Logging for failed downloads
+- Upgrade guide for YT-DLP in case of failed downloads
+
+---
+
 ### 0.4.0 - 2025-AUG-21
 
 ### Added

@@ -156,6 +156,17 @@ spotify-ytdlp/
 
 ---
 
+## ⚙️ Upgrade guide
+
+If the system fails to donwload your music too frequently, make sure to run this command
+
+    ```bash
+    pip install --upgrade yt-dlp
+    ```
+
+
+---
+
 ## 📄 Configuration
 
 Edit `config.json` to set your preferences:
